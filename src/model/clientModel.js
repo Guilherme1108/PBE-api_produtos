@@ -1,7 +1,7 @@
 let clients = [
     {
         id: 1,
-        nome: 'Ana Paula Souza',
+        nome: 'Ana',
         email: 'ana.souza@gmail.com',
         telefone: '(11) 91234-5678',
         endereco: {
@@ -17,7 +17,7 @@ let clients = [
     },
     {
         id: 2,
-        nome: 'Carlos Henrique Lima',
+        nome: 'Carlos',
         email: 'carlos.lima@hotmail.com',
         telefone: '(21) 99876-5432',
         endereco: {
@@ -33,7 +33,7 @@ let clients = [
     },
     {
         id: 3,
-        nome: 'Beatriz Oliveira',
+        nome: 'Beatriz',
         email: 'beatriz.oli@gmail.com',
         telefone: '(31) 98765-4321',
         endereco: {
@@ -54,12 +54,17 @@ const findAll = () => {
     return clients
 }
 
-//Função para buscar produto por id
-const findByid = (id) => {
+//Função para buscar cliente por id
+const findById = (id) => {
     return clients.find(client => client.id === id)
 }
 
-//Função para adicionar um nobo produto
+//Função para buscar cliente pelo nome
+const findByName = (nome) => {
+    return clients.find(client => client.nome === nome)
+}
+
+//Função para adicionar um novo cliente
 const create = (newClient) => {
     const newId = clients.length > 0 ? clients[clients.length - 1].id + 1 : 1
     const clientWithId = {id: newId, ...newClient}
@@ -67,15 +72,16 @@ const create = (newClient) => {
     return clientWithId
 }
 
-//Função para atualizar um produto
+//Função para atualizar um cliente
 // const  update = (clientUpdate)
 
-//função para excluir um produto
+//função para excluir um cliente
 // const delete = (deleteClient)
 
 //Exportando
 module.exports = {
     findAll,
-    findByid,
+    findById,
+    findByName,
     create
 }

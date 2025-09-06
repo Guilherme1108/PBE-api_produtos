@@ -6,7 +6,7 @@ const getAllProducts = (req, res) => {
     res.status(200).json(products)
 }
 
-//Método do controlador para pegar um produyo por ID
+//Método do controlador para pegar um produto por ID
 const getProductById = (req, res) => {
     const id = parseInt(req.params.id)
     const product = productModel.findById(id)
