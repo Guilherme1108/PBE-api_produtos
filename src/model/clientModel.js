@@ -73,7 +73,12 @@ const create = (newClient) => {
 }
 
 //Função para atualizar um cliente
-// const  update = (clientUpdate)
+const  updateById = (mudancas) => {
+    const {id} = mudancas //pega o id que foi fornecido no body para identificar o cliente
+    const index = clients.findIndex(product => product.id === id)
+    clients[index] = {...clients[index], ...mudancas}
+    return clients[index]
+}
 
 //função para excluir um cliente
 const deleteByName = (id) => {
@@ -91,5 +96,6 @@ module.exports = {
     findById,
     findByName,
     create,
+    updateById,
     deleteByName
 }

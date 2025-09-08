@@ -45,6 +45,19 @@ const createClient = (req, res) => {
     }
 }
 
+//Método para atualizar dados do cliente
+const updateClient = (req, res) => {
+    const mudancas = req.body
+
+    const clientModificado = clientModel.updateById(mudancas)
+
+    if (!clientModificado) {
+        return res.status(400).json({ mensagem: 'Produto não encontrado.' })
+    }
+
+    return res.status(200).json({ mensagem: 'Produto atualizado com sucesso.', clientModificado })
+}
+
 // Método para excluir um cliente
 const deleteClient = (req, res) => {
     const { id } = req.params
@@ -68,5 +81,6 @@ const deleteClient = (req, res) => {
         getClientById,
         getClientByName,
         createClient,
+        updateClient,
         deleteClient
     }

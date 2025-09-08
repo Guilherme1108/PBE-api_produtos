@@ -12,6 +12,8 @@ router.get('/nome/:nome', productController.getProductByName)
 
 router.post('/', productController.createProduct)
 
+router.patch('/', productController.updateProduct)
+
 router.delete('/:id', productController.deleteProduct)
 
 module.exports = router

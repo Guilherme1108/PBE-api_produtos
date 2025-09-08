@@ -45,6 +45,23 @@ const createProduct = (req, res) => {
     }
 }
 
+//Método para atualizar um produto
+const updateProduct = (req, res) => {
+    const mudancas = req.body
+
+    if (!mudancas.id) {
+        return res.status(400).json({ mensagem: 'Forneça o id no body.' })
+    }
+
+    const productModificado = productModel.updateById(mudancas)
+
+    if (!productModificado) {
+        return res.status(404).json({ mensagem: 'Produto não encontrado.' })
+    }
+
+    return res.status(200).json({ mensagem: 'Produto atualizado com sucesso.', productModificado })
+}
+
 
 // Método para excluir um produto
 const deleteProduct = (req, res) => {
@@ -70,5 +87,6 @@ module.exports = {
     getProductById,
     getProductByName,
     createProduct,
+    updateProduct,
     deleteProduct
 }

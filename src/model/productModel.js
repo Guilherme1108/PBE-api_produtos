@@ -52,7 +52,12 @@ const create = (newProduct) => {
 }
 
 //Função para atualizar um produto
-// const  update = (productUpdate)
+const  updateById = (mudancas) => {
+    const {id} = mudancas //pega o id que foi fornecido no body para identificar o cliente
+    const index = products.findIndex(product => product.id === id)
+    products[index] = {...products[index], ...mudancas}
+    return products[index]
+}
 
 //função para excluir um produto
 const deleteById = (id) => {
@@ -71,5 +76,6 @@ module.exports = {
     findById,
     findByName,
     create,
+    updateById,
     deleteById
 }

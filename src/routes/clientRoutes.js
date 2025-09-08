@@ -12,6 +12,8 @@ router.get('/nome/:nome', clientController.getClientByName)
 
 router.post('/', clientController.createClient)
 
+router.patch('/', clientController.updateClient)
+
 router.delete('/:id', clientController.deleteClient)
 
 
