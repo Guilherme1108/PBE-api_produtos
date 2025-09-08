@@ -76,8 +76,8 @@ const create = (newClient) => {
 // const  update = (clientUpdate)
 
 //função para excluir um cliente
-const deleteByName = (nome) => {
-    const index = clients.findIndex(product => product.nome === nome) //Procura o indice que tenha um nome igual ao que foi passado no parametro
+const deleteByName = (id) => {
+    const index = clients.findIndex(product => product.id === id) //Procura o indice que tenha um nome igual ao que foi passado no parametro
     if (index === -1) { //se não encontrar nenhm index irá retornar null
         return null
     }

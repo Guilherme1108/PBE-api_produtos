@@ -12,7 +12,7 @@ const porta = 8000 //Porta do servidor
 
 //Rota teste da API
 app.get('/', (req, res) => {
-    res.send('A API ta funcionando 👽👽👽')
+    res.send('A API ta funcionando')
 })
 
 //usando as rotas dos produtos e clientes

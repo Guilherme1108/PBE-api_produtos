@@ -47,13 +47,14 @@ const createClient = (req, res) => {
 
 // Método para excluir um cliente
 const deleteClient = (req, res) => {
-    const { nome } = req.params
+    const { id } = req.params
+    let idNumero = Number(id)
 
-    if (!nome) {
-        return res.status(400).json({ mensagem: 'É necessário fornecer o nome do cliente.' })
+    if (!idNumero) {
+        return res.status(400).json({ mensagem: 'É necessário fornecer o id do cliente.' })
     }
 
-    const deletedClient = clientModel.deleteByName(nome)
+    const deletedClient = clientModel.deleteByName(idNumero)
 
     if (!deletedClient) {
         return res.status(404).json({ mensagem: 'Cliente não encontrado.' })

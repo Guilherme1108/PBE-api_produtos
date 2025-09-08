@@ -12,7 +12,7 @@ router.get('/nome/:nome', clientController.getClientByName)
 
 router.post('/', clientController.createClient)
 
-router.delete('/:nome', clientController.deleteClient)
+router.delete('/:id', clientController.deleteClient)
 
 
 module.exports = router

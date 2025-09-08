@@ -55,9 +55,9 @@ const create = (newProduct) => {
 // const  update = (productUpdate)
 
 //função para excluir um produto
-const deleteByName = (nome) => {
-    const index = products.findIndex(product => product.nome === nome) //Procura o indice que tenha um nome igual ao que foi passado no parametro
-    if (index === -1) { //se não encontrar nenhm index irá retornar null
+const deleteById = (id) => {
+    const index = products.findIndex(product => product.id === id) //Procura o indice que tenha um id igual ao que foi passado no parametro
+    if (index === -1) {  // Se não encontrar nenhum índice, retorna null
         return null
     }
     const deleted = products.splice(index, 1)[0] //se encontrar um index, ele remove 1 elemento sendo o index encontrado
@@ -71,5 +71,5 @@ module.exports = {
     findById,
     findByName,
     create,
-    deleteByName
+    deleteById
 }

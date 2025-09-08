@@ -48,13 +48,14 @@ const createProduct = (req, res) => {
 
 // Método para excluir um produto
 const deleteProduct = (req, res) => {
-    const { nome } = req.params
+    const { id } = req.params
+    let idNumero = Number(id)
 
-    if (!nome) {
-        return res.status(400).json({ mensagem: 'É necessário fornecer o nome do produto.' })
+    if (!idNumero) {
+        return res.status(400).json({ mensagem: 'É necessário fornecer o id do produto.' })
     }
 
-    const deletedProduct = productModel.deleteByName(nome)
+    const deletedProduct = productModel.deleteById(idNumero)
 
     if (!deletedProduct) {
         return res.status(404).json({ mensagem: 'Produto não encontrado.' })
