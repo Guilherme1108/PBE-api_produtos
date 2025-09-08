@@ -76,12 +76,20 @@ const create = (newClient) => {
 // const  update = (clientUpdate)
 
 //função para excluir um cliente
-// const delete = (deleteClient)
+const deleteByName = (nome) => {
+    const index = clients.findIndex(product => product.nome === nome) //Procura o indice que tenha um nome igual ao que foi passado no parametro
+    if (index === -1) { //se não encontrar nenhm index irá retornar null
+        return null
+    }
+    const deleted = clients.splice(index, 1)[0] //se encontrar um index, ele remove 1 elemento sendo o index encontrado
+    return deleted
+}
 
 //Exportando
 module.exports = {
     findAll,
     findById,
     findByName,
-    create
+    create,
+    deleteByName
 }

@@ -45,9 +45,27 @@ const createClient = (req, res) => {
     }
 }
 
+// Método para excluir um cliente
+const deleteClient = (req, res) => {
+    const { nome } = req.params
+
+    if (!nome) {
+        return res.status(400).json({ mensagem: 'É necessário fornecer o nome do cliente.' })
+    }
+
+    const deletedClient = clientModel.deleteByName(nome)
+
+    if (!deletedClient) {
+        return res.status(404).json({ mensagem: 'Cliente não encontrado.' })
+    }
+
+    return res.status(200).json({ mensagem: 'Cliente removido com sucesso.', deletedClient })
+}
+
     module.exports = {
         getAllClients,
         getClientById,
         getClientByName,
-        createClient
+        createClient,
+        deleteClient
     }

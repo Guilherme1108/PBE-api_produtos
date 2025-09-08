@@ -46,7 +46,7 @@ const findByName = (nome) => {
 //Função para adicionar um novo produto
 const create = (newProduct) => {
     const newId = products.length > 0 ? products[products.length - 1].id + 1 : 1
-    const productWithId = {id: newId, ...newProduct}
+    const productWithId = { id: newId, ...newProduct }
     products.push(productWithId)
     return productWithId
 }
@@ -55,12 +55,21 @@ const create = (newProduct) => {
 // const  update = (productUpdate)
 
 //função para excluir um produto
-// const delete = (deleteProduct)
+const deleteByName = (nome) => {
+    const index = products.findIndex(product => product.nome === nome) //Procura o indice que tenha um nome igual ao que foi passado no parametro
+    if (index === -1) { //se não encontrar nenhm index irá retornar null
+        return null
+    }
+    const deleted = products.splice(index, 1)[0] //se encontrar um index, ele remove 1 elemento sendo o index encontrado
+    return deleted
+}
+
 
 //Exportando
 module.exports = {
     findAll,
     findById,
     findByName,
-    create
+    create,
+    deleteByName
 }

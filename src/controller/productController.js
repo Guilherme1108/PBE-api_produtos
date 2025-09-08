@@ -38,16 +38,36 @@ const createProduct = (req, res) => {
 
     //validando
     if (!nome || !descricao || !preco || !categoria || !estoque || ativo === undefined) {
-        return res.status(400).json({ mensagem: 'Informações faltando, o produto não foi criado' })
+        return res.status(400).json({ mensagem: 'Informações faltando, o produto não foi criado.' })
     } else {
-        const newProduct = productModel.create({nome, descricao, preco, categoria, estoque, ativo})
-        res.status(201).json({newProduct})
+        const newProduct = productModel.create({ nome, descricao, preco, categoria, estoque, ativo })
+        res.status(201).json({ newProduct })
     }
 }
 
-    module.exports = {
-        getAllProducts,
-        getProductById,
-        getProductByName,
-        createProduct
+
+// Método para excluir um produto
+const deleteProduct = (req, res) => {
+    const { nome } = req.params
+
+    if (!nome) {
+        return res.status(400).json({ mensagem: 'É necessário fornecer o nome do produto.' })
     }
+
+    const deletedProduct = productModel.deleteByName(nome)
+
+    if (!deletedProduct) {
+        return res.status(404).json({ mensagem: 'Produto não encontrado.' })
+    }
+
+    return res.status(200).json({ mensagem: 'Produto deletado com sucesso.', deletedProduct })
+}
+
+
+module.exports = {
+    getAllProducts,
+    getProductById,
+    getProductByName,
+    createProduct,
+    deleteProduct
+}
