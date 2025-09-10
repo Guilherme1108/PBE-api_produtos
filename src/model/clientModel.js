@@ -75,14 +75,14 @@ const create = (newClient) => {
 //Função para atualizar um cliente
 const  updateById = (mudancas) => {
     const {id} = mudancas //pega o id que foi fornecido no body para identificar o cliente
-    const index = clients.findIndex(product => product.id === id)
+    const index = clients.findIndex(client => client.id === id)
     clients[index] = {...clients[index], ...mudancas}
     return clients[index]
 }
 
 //função para excluir um cliente
-const deleteByName = (id) => {
-    const index = clients.findIndex(product => product.id === id) //Procura o indice que tenha um nome igual ao que foi passado no parametro
+const deleteById = (id) => {
+    const index = clients.findIndex(client => client.id === id) //Procura o indice que tenha um nome igual ao que foi passado no parametro
     if (index === -1) { //se não encontrar nenhm index irá retornar null
         return null
     }
@@ -97,5 +97,5 @@ module.exports = {
     findByName,
     create,
     updateById,
-    deleteByName
+    deleteById
 }

@@ -49,10 +49,14 @@ const createClient = (req, res) => {
 const updateClient = (req, res) => {
     const mudancas = req.body
 
+    if (!mudancas.id) {
+        return res.status(400).json({ mensagem: 'Forneça o id no body.' })
+    }
+
     const clientModificado = clientModel.updateById(mudancas)
 
     if (!clientModificado) {
-        return res.status(400).json({ mensagem: 'Produto não encontrado.' })
+        return res.status(404).json({ mensagem: 'Produto não encontrado.' })
     }
 
     return res.status(200).json({ mensagem: 'Produto atualizado com sucesso.', clientModificado })
@@ -67,7 +71,7 @@ const deleteClient = (req, res) => {
         return res.status(400).json({ mensagem: 'É necessário fornecer o id do cliente.' })
     }
 
-    const deletedClient = clientModel.deleteByName(idNumero)
+    const deletedClient = clientModel.deleteById(idNumero)
 
     if (!deletedClient) {
         return res.status(404).json({ mensagem: 'Cliente não encontrado.' })
